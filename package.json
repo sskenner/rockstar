@@ -1,4 +1,4 @@
-  {
+{
   "name": "rockstar",
   "version": "1.0.0",
   "description": "rockstar hackathon",
@@ -9,6 +9,24 @@
   "author": "santana kenner",
   "license": "ISC",
   "devDependencies": {
+    "@wdio/dot-reporter": "^5.16.5",
+    "@wdio/local-runner": "^5.16.6",
+    "@wdio/mocha-framework": "^5.16.5",
+    "@wdio/selenium-standalone-service": "^5.16.5",
+    "@wdio/spec-reporter": "^5.16.5",
+    "@wdio/sync": "^5.16.5",
+    "chai": "^4.0.2",
+    "chai-webdriverio": "^1.0.0",
+    "chromedriver": "^78.0.1",
+    "local-runner": "^0.1.1-alpha",
+    "wdio-chromedriver-service": "^5.0.2",
     "webdriverio": "^5.16.6"
+  },
+  "dependencies": {
+    "@wdio/cli": "^5.16.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sskenner/rockstar.git"
   }
 }
