@@ -1,0 +1,14 @@
+  {
+  "name": "rockstar",
+  "version": "1.0.0",
+  "description": "rockstar hackathon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "santana kenner",
+  "license": "ISC",
+  "devDependencies": {
+    "webdriverio": "^5.16.6"
+  }
+}
