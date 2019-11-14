@@ -1,6 +1,7 @@
 const internetPage = require('../pages/internet.page')
 
-describe('Test to ensure Login Page UI elements look OK', () => {
+describe('Login page UI elements, login functionality, table sort, canvas chart, and dynamic content test', () => {
+  // Login Page UI Elements Test - Test to ensure Login Page UI elements look OK, specific login functionality 
   it('should detect if logo image is existing', () => {
     console.log(browser.url(`${browser.options.baseUrl}`));
     expect(internetPage.logoImage.isExisting()).equals(true, 'expected logo image to exist');
