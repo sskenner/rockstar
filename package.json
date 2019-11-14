@@ -4,7 +4,7 @@
   "description": "rockstar hackathon",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./node_modules/.bin/wdio ./wdio.conf.js"
   },
   "author": "santana kenner",
   "license": "ISC",
