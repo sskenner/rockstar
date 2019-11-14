@@ -26,7 +26,7 @@ class Internet {
   get fingerprint() {
     return $(".os-icon-fingerprint");
   }
-  get login() {
+  get loginButton() {
     return $("#log-in");
   }
   get checkbox() {
@@ -34,6 +34,15 @@ class Internet {
   }
   get checkboxLabel() {
     return $(".form-check-label");
+  }
+  get twitterButton() {
+    return $(".buttons-w div:nth-child(3) a:nth-child(1) img");
+  }
+  get facebookButton() {
+    return $(".buttons-w div:nth-child(3) a:nth-child(2) img");
+  }
+  get linkedinButton() {
+    return $(".buttons-w div:nth-child(3) a:nth-child(3) img");
   }
 }
 module.exports = new Internet();
