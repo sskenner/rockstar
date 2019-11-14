@@ -38,6 +38,27 @@ describe('Test to ensure Login Page UI elements look OK', () => {
   it('should detect if password form placeholder is existing', () => {
     expect(internetPage.password.getAttribute('placeholder')).equals('Enter your password', 'expected password form placeholder text to be "Enter your password"');
   });
+  it('should detect if userMaleCircle icon is existing', () => {
+    expect(internetPage.userMaleCircle.isExisting()).equals(true, 'expected userMaleCircle icon to exist');
+  });
+  it('should detect if fingerprint icon is existing', () => {
+    expect(internetPage.fingerprint.isExisting()).equals(true, 'expected fingerprint icon to exist');
+  });
+  it('should detect if fingerprint icon is existing', () => {
+    expect(internetPage.fingerprint.isExisting()).equals(true, 'expected fingerprint icon to exist');
+  });
+  it('should detect if login button is existing', () => {
+    expect(internetPage.login.isExisting()).equals(true, 'expected login button to exist');
+  });
+  it('should get correct login button text', () => {
+    expect(internetPage.login.getText()).equals('Log In', 'expected login button text to be "Log In"');
+  });
+  it('should detect if remember me checkbox is existing', () => {
+    expect(internetPage.checkbox.isExisting()).equals(true, 'expected remember me checkbox to exist');
+  });
+  it('should get correct remember me checkbox label text', () => {
+    expect(internetPage.checkboxLabel.getText()).equals('Remember Me', 'expected remember me checkbox text to be "Remember Me"');
+  });
 
   // TODO: write tests for all elements on page
 
