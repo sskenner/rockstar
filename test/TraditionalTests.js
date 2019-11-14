@@ -56,6 +56,9 @@ describe('Test to ensure Login Page UI elements look OK', () => {
   it('should detect if remember me checkbox is existing', () => {
     expect(internetPage.checkbox.isExisting()).equals(true, 'expected remember me checkbox to exist');
   });
+  it('should detect if remember me checkbox style is correct', () => {
+    expect(internetPage.checkbox.getAttribute('style')).equals('', 'expected remember me checkbox style to be ""');
+  });
   it('should get correct remember me checkbox label text', () => {
     expect(internetPage.checkboxLabel.getText()).equals('Remember Me', 'expected remember me checkbox text to be "Remember Me"');
   });
