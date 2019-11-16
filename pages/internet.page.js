@@ -45,6 +45,9 @@ class Internet {
   get linkedinButton() {
     return $(".buttons-w div:nth-child(3) a:nth-child(3) img");
   }
+  get loginError() {
+    return $(".alert-warning");
+  }
 
   // functions
   /**
@@ -55,7 +58,6 @@ class Internet {
     this.username.waitForDisplayed();
     this.username.setValue(text);
   }
-
   /**
    * 
    * @param {string} text password to be entered
@@ -64,6 +66,13 @@ class Internet {
     this.password.waitForDisplayed();
     this.password.setValue(text);
   }
-  
+  /**
+   * click the login button
+   */
+  clickLoginButton() {
+    this.loginButton.waitForDisplayed();
+    this.loginButton.click();
+  }
+
 }
 module.exports = new Internet();

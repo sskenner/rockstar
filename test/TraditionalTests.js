@@ -103,6 +103,39 @@ describe('Login page UI elements, login functionality, table sort, canvas chart,
     browser.pause(1000);
     assert.equal("", internetPage.password.getValue());
   });
+  it('should detect if login error alert is displayed', () => {
+    internetPage.clickLoginButton();
+    browser.pause(1000);
+    expect(internetPage.loginError.isDisplayed()).equals(true, 'expected login error alert to be displayed');
+  });
+  it('should get correct login error alert text', () => {
+    expect(internetPage.loginError.getText()).equals('Both Username and Password must be present', 'expected login button text to be "Both Username and Password must be present"');
+  });
+  it('should detect if password is present error alert is displayed', () => {
+    internetPage.enterUsername(loginData.username);
+    internetPage.password.click();
+    internetPage.password.clearValue();
+    internetPage.clickLoginButton();
+    browser.pause(1000);
+    expect(internetPage.loginError.isDisplayed()).equals(true, 'expected login error alert to be displayed');
+  });
+  it('should detect if password is present error alert is correct', () => {
+    browser.pause(1000);
+    expect(internetPage.loginError.getText()).equals('Password must be present', 'expected login button text to be "Password must be present"');
+  });
+  it('should detect if username is present error alert is displayed', () => {
+    internetPage.enterPassword(loginData.password);
+    internetPage.username.click();
+    internetPage.username.clearValue();
+    internetPage.clickLoginButton();
+    browser.pause(1000);
+    expect(internetPage.loginError.isDisplayed()).equals(true, 'expected login error alert to be displayed');
+  });
+  it('should detect if username is present error alert is correct', () => {
+    browser.pause(1000);
+    expect(internetPage.loginError.getText()).equals('Username must be present', 'expected login button text to be "Username must be present"');
+  });
+
   it('', () => {
     
   });
