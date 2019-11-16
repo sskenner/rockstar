@@ -48,6 +48,9 @@ class Internet {
   get loginError() {
     return $(".alert-warning");
   }
+  get userAvatar() {
+    return $(".logged-user-w img")
+  }
 
   // functions
   /**

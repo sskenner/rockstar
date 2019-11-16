@@ -136,10 +136,12 @@ describe('Login page UI elements, login functionality, table sort, canvas chart,
     expect(internetPage.loginError.getText()).equals('Username must be present', 'expected login button text to be "Username must be present"');
   });
   it('should login to app with username & password', () => {
+    // browser.url(`${browser.options.baseUrl}`)
     internetPage.enterUsername(loginData.username);
+    // internetPage.enterPassword(loginData.username);
     internetPage.clickLoginButton();
     browser.pause(1000);
-    expect(browser.getUrl()).equals("https://demo.applitools.com/hackathonApp.html");
+    expect(internetPage.userAvatar.isExisting()).equals(true, 'expected avatar image to exist');
     browser.pause(1000);
   });
 
