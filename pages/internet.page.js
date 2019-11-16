@@ -51,8 +51,77 @@ class Internet {
   get userAvatar() {
     return $(".logged-user-w img")
   }
+  get table() {
+    return $("tbody");
+  }
+  get tableRows() {
+    return this.table.$$("tr");
+  }
+  get tableColumns() {
+    return this.table.$$("td:nth-child(5)");
+  }
+  get headerAmountSort() {
+    return $("thead th:nth-child(5)");
+  }
+
+
 
   // functions
+  getColumnText() {
+    let tableArrayColumn = [];
+    this.tableColumns.forEach(element => {
+      console.log(element.getText());
+      let tableColumnCurr = element.getText();
+      let tableColumnNum = tableColumnCurr.replace(/[^0-9-\.]+/g, "");
+      tableArrayColumn.push(tableColumnNum);
+    });
+    return tableArrayColumn;
+  }
+  getColumnTextSorted() {
+    let sorted = this.getColumnText().sort(function(a, b) {
+      return a - b;
+    });
+    // // TODO: rmv for test verification ONLY
+    // sorted.pop();
+    // sorted.push(20.00);
+    // //
+    return sorted;
+  }
+  getColumnTextClick() {
+    let tableArrayColumnClick = [];
+    this.headerAmountSort.click();
+    this.tableColumns.forEach(element => {
+      // console.log(element.getText());
+      let tableColumnCurrClick = element.getText();
+      let tableColumnNumClick = tableColumnCurrClick.replace(/[^0-9-\.]+/g, "");
+      tableArrayColumnClick.push(tableColumnNumClick);
+    });
+    return tableArrayColumnClick;
+  }
+  areArraysEqualSets(a1, a2) {
+    let superSet = {};
+    for (let i = 0; i < a1.length; i++) {
+      const e = a1[i] + typeof a1[i];
+      superSet[e] = 1;
+    }
+
+    for (let i = 0; i < a2.length; i++) {
+      const e = a2[i] + typeof a2[i];
+      if (!superSet[e]) {
+        return false;
+      }
+      superSet[e] = 2;
+    }
+
+    for (let e in superSet) {
+      if (superSet[e] === 1) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+  //////
   /**
    * 
    * @param {string} text username to be entered
