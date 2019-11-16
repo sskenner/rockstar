@@ -4,7 +4,7 @@ loginData = require("../data/loginData");
 describe("Login page UI elements, login functionality, table sort, canvas chart, and dynamic content test", () => {
   // Login Page UI Elements Test - Test to ensure Login Page UI elements look OK
   it("should detect if logo image is existing", () => {
-    console.log(browser.url(`${browser.options.baseUrl}/hackathon.html`));
+    console.log(browser.url(`${browser.options.baseUrl}`));
     expect(internetPage.logoImage.isExisting()).equals(
       true,
       "expected logo image to exist"
@@ -242,12 +242,12 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
   });
 
   // Table Sort Test - Tests for table sorting
-  it.only("should sort amount column in ascending order", () => {
-    // TODO: rmv for test verification ONLY
-    browser.url(`${browser.options.baseUrl}`);
-    internetPage.enterUsername(loginData.username);
-    internetPage.enterPassword(loginData.username);
-    internetPage.clickLoginButton();
+  it("should sort amount column in ascending order", () => {
+    // // TODO: rmv for test verification ONLY
+    // browser.url(`${browser.options.baseUrl}`);
+    // internetPage.enterUsername(loginData.username);
+    // internetPage.enterPassword(loginData.username);
+    // internetPage.clickLoginButton();
     // console.log(internetPage.getColumnText());
     // console.log(internetPage.getColumnTextSorted());
     //
@@ -255,15 +255,38 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
     console.log(unSorted);
     //
     let sorted = internetPage.getColumnTextSorted();
+    // let sorted = [ '-244.00', '-320.00', '1250.00', '17.99', '340.00', '952.23' ];
     console.log(sorted);
     let sortedClick = internetPage.getColumnTextClick();
     // TODO: rmv for test verification ONLY
     console.log(sortedClick);
-    console.log(internetPage.areArraysEqualSets(sortedClick, sorted));
-    //
-    expect(internetPage.areArraysEqualSets(sortedClick, sorted)).equals(
+    var is_same = (sorted.length == sortedClick.length) && sorted.every(function(element, index) {
+      return element === sortedClick[index]; 
+    });
+    console.log(is_same);
+    // //
+    expect(is_same).equals(
       true,
       "expected column amount data to be sorted in ascending order"
+    );
+  });
+  it("should keep data in tact after sorting", () => {
+    // // TODO: rmv for test verification ONLY
+    // browser.url(`${browser.options.baseUrl}`);
+    // internetPage.enterUsername(loginData.username);
+    // internetPage.enterPassword(loginData.username);
+    // internetPage.clickLoginButton();
+    // console.log(internetPage.getRowText());
+    let unSorted = internetPage.getRowText();
+    console.log(unSorted);
+    let sorted = internetPage.getRowTextSorted();
+    // TODO: rmv for test verification ONLY
+    console.log(sorted);
+    console.log(internetPage.areArraysEqualSets(unSorted, sorted));
+    //
+    expect(internetPage.areArraysEqualSets(unSorted, sorted)).equals(
+      true,
+      "expected data to be in tact after sort"
     );
   });
 

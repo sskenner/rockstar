@@ -98,6 +98,31 @@ class Internet {
     });
     return tableArrayColumnClick;
   }
+  getRowText() {
+    let tableArrayRow = [];
+    this.tableRows.forEach(element => {
+      // console.log(element.getText());
+      let tableRow = element.getText();
+      tableArrayRow.push(tableRow);
+    });
+    return tableArrayRow;
+  }
+  getRowTextSorted() {
+    let tableArraySorted = [];
+    this.headerAmountSort.click();
+    this.tableRows.forEach(element => {
+      // console.log(element.getText());
+      let tableRow = element.getText();
+      tableArraySorted.push(tableRow);
+    });
+    // // TODO: rmv for test verification ONLY
+    // tableArraySorted.pop();
+    // tableArraySorted.push(
+    //   "Jan 9th7:45pm Pending Templates Inc Business + 340.00 USD"
+    // );
+    // //
+    return tableArraySorted;
+  }
   areArraysEqualSets(a1, a2) {
     let superSet = {};
     for (let i = 0; i < a1.length; i++) {
@@ -118,7 +143,6 @@ class Internet {
         return false;
       }
     }
-
     return true;
   }
   //////
