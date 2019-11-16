@@ -1,4 +1,5 @@
 class Internet {
+  // page objects
   get logoImage() {
     return $(".logo-w img");
   }
@@ -44,5 +45,25 @@ class Internet {
   get linkedinButton() {
     return $(".buttons-w div:nth-child(3) a:nth-child(3) img");
   }
+
+  // functions
+  /**
+   * 
+   * @param {string} text username to be entered
+   */
+  enterUsername(text) {
+    this.username.waitForDisplayed();
+    this.username.setValue(text);
+  }
+
+  /**
+   * 
+   * @param {string} text password to be entered
+   */
+  enterPassword(text) {
+    this.password.waitForDisplayed();
+    this.password.setValue(text);
+  }
+  
 }
 module.exports = new Internet();

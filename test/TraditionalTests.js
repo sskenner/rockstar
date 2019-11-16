@@ -1,7 +1,8 @@
 const internetPage = require('../pages/internet.page')
+loginData = require("../data/loginData")
 
 describe('Login page UI elements, login functionality, table sort, canvas chart, and dynamic content test', () => {
-  // Login Page UI Elements Test - Test to ensure Login Page UI elements look OK, specific login functionality 
+  // Login Page UI Elements Test - Test to ensure Login Page UI elements look OK
   it('should detect if logo image is existing', () => {
     console.log(browser.url(`${browser.options.baseUrl}`));
     expect(internetPage.logoImage.isExisting()).equals(true, 'expected logo image to exist');
@@ -11,9 +12,6 @@ describe('Login page UI elements, login functionality, table sort, canvas chart,
   });
   it('should get correct auth header text', () => {
     expect(internetPage.authHeader.getText()).equals('Login Form', 'expected auth header text to be "Login Form"');
-  });
-  it('should detect if auth header css property is existing', () => {
-    // webdriver unable to test pseudo element "::after"
   });
   it('should detect if username form label is existing', () => {
     expect(internetPage.formLabelUsername.isExisting()).equals(true, 'expected username form label to exist');
@@ -80,6 +78,33 @@ describe('Login page UI elements, login functionality, table sort, canvas chart,
   });
   it('should detect if linkedin button src is correct', () => {
     expect(internetPage.linkedinButton.getAttribute('src')).equals('https://demo.applitools.com/img/social-icons/linkedin.png', 'expected linkedin button src to be "img/social-icons/linkedin.png"');
+  });
+
+  // Data-Driven Test - Tests for specific login functionality
+  it('should enter username', () => {
+    internetPage.enterUsername(loginData.username);
+    browser.pause(1000);
+    assert.equal(loginData.username, internetPage.username.getValue())
+  });
+  it("should clear username value", () => {
+    internetPage.username.click();
+    internetPage.username.clearValue();
+    browser.pause(1000);
+    assert.equal("", internetPage.username.getValue());
+  });
+  it('should enter password', () => {
+    internetPage.enterPassword(loginData.password);
+    browser.pause(1000);
+    assert.equal(loginData.password, internetPage.password.getValue())
+  });
+  it("should clear password value", () => {
+    internetPage.password.click();
+    internetPage.password.clearValue();
+    browser.pause(1000);
+    assert.equal("", internetPage.password.getValue());
+  });
+  it('', () => {
+    
   });
 
   // TODO: write tests for all elements on page
