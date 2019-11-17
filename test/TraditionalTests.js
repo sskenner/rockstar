@@ -3,7 +3,40 @@ loginData = require("../data/loginData");
 
 describe("Traditional Approach", () => {
   // Test to ensure Login Page UI elements look OK
-  describe.only('Login Page UI suite', () => {
+  describe('Login Page UI suite', () => {
+    describe('Visusal regression comparison', () => {
+      beforeEach(() => {
+        browser.url(`${browser.options.baseUrl}`);
+      });
+      it("should save some screenshots", () => {
+        // browser.url(`${browser.options.baseUrl}`);
+        // Save a screen
+        browser.saveScreen("examplePagedLogin", {
+          /* some options*/
+        });
+    
+        // // Save an element
+        // browser.saveElement($('#element-id'), 'firstButtonElement', { /* some options*/ });
+    
+        // Save a full page screens
+        browser.saveFullPageScreen("fullPageLogin", {
+          /* some options*/
+        });
+      });
+      it("should compare successful for a baseline with existing elements", () => {
+        // browser.url('https://demo.applitools.com/hackathonChartV2.html');
+        // TODO: rmv for test verification ONLY
+        // browser.url(`${browser.options.baseUrl}`);
+        // browser.pause(5000);
+  
+        // Check a full page screens
+        expect(
+          browser.checkFullPageScreen("fullPageLogin", {
+            /* some options*/
+          })
+        ).equals(0, "expected chart to remain the same");
+      });
+    });
     describe('Visual elements existance test', () => {
       it("should detect if logo image exists", () => {
         console.log(browser.url(`${browser.options.baseUrl}`));
@@ -146,26 +179,26 @@ describe("Traditional Approach", () => {
         );
       });
     });
-    describe('Image elements source test', () => {
-      it("should detect if twitter button src is correct", () => {
-        expect(internetPage.twitterButton.getAttribute("src")).equals(
-          "https://demo.applitools.com/img/social-icons/twitter.png",
-          'expected twitter button src to be "img/social-icons/twitter.png"'
-        );
-      });
-      it("should detect if facebook button src is correct", () => {
-        expect(internetPage.facebookButton.getAttribute("src")).equals(
-          "https://demo.applitools.com/img/social-icons/facebook.png",
-          'expected facebook button src to be "img/social-icons/facebook.png"'
-        );
-      });
-      it("should detect if linkedin button src is correct", () => {
-        expect(internetPage.linkedinButton.getAttribute("src")).equals(
-          "https://demo.applitools.com/img/social-icons/linkedin.png",
-          'expected linkedin button src to be "img/social-icons/linkedin.png"'
-        );
-      });
-    });
+    // describe('Image elements source test', () => {
+    //   it("should detect if twitter button src is correct", () => {
+    //     expect(internetPage.twitterButton.getAttribute("src")).equals(
+    //       "https://demo.applitools.com/img/social-icons/twitter.png",
+    //       'expected twitter button src to be "img/social-icons/twitter.png"'
+    //     );
+    //   });
+    //   it("should detect if facebook button src is correct", () => {
+    //     expect(internetPage.facebookButton.getAttribute("src")).equals(
+    //       "https://demo.applitools.com/img/social-icons/facebook.png",
+    //       'expected facebook button src to be "img/social-icons/facebook.png"'
+    //     );
+    //   });
+    //   it("should detect if linkedin button src is correct", () => {
+    //     expect(internetPage.linkedinButton.getAttribute("src")).equals(
+    //       "https://demo.applitools.com/img/social-icons/linkedin.png",
+    //       'expected linkedin button src to be "img/social-icons/linkedin.png"'
+    //     );
+    //   });
+    // });
   });
   
   // Test to ensure specific login functionality
@@ -311,14 +344,16 @@ describe("Traditional Approach", () => {
 
   // Tests to ensure the addition of 2019 data
   describe('Canvas Chart test suite', () => {
+    beforeEach(() => {
+      browser.url(`${browser.options.baseUrl}`);
+    });
     it("should save some screenshots", () => {
-      browser.url(`${browser.options.baseUrl}`)
       internetPage.enterUsername(loginData.username);
       internetPage.enterPassword(loginData.username);
       internetPage.clickLoginButton();
       internetPage.compareExpenses.click();
       // Save a screen
-      browser.saveScreen("examplePaged", {
+      browser.saveScreen("examplePagedCompareExpenses", {
         /* some options*/
       });
   
@@ -326,7 +361,7 @@ describe("Traditional Approach", () => {
       // browser.saveElement($('#element-id'), 'firstButtonElement', { /* some options*/ });
   
       // Save a full page screens
-      browser.saveFullPageScreen("fullPage", {
+      browser.saveFullPageScreen("fullPageCompareExpenses", {
         /* some options*/
       });
     });
@@ -334,11 +369,15 @@ describe("Traditional Approach", () => {
       // browser.url('https://demo.applitools.com/hackathonChartV2.html');
       // TODO: rmv for test verification ONLY
       // browser.url(`${browser.options.baseUrl}`);
+      internetPage.enterUsername(loginData.username);
+      internetPage.enterPassword(loginData.username);
+      internetPage.clickLoginButton();
+      internetPage.compareExpenses.click();
       // browser.pause(5000);
 
       // Check a full page screens
       expect(
-        browser.checkFullPageScreen("fullPage", {
+        browser.checkFullPageScreen("fullPageCompareExpenses", {
           /* some options*/
         })
       ).equals(0, "expected chart to remain the same");
@@ -347,10 +386,14 @@ describe("Traditional Approach", () => {
       // browser.url('https://demo.applitools.com/hackathonChartV2.html');
       // TODO: rmv for test verification ONLY
       // browser.url(`${browser.options.baseUrl}`);
+      internetPage.enterUsername(loginData.username);
+      internetPage.enterPassword(loginData.username);
+      internetPage.clickLoginButton();
+      internetPage.compareExpenses.click();
       internetPage.addDataSet.click();
       // Check a full page screens
       expect(
-        browser.checkFullPageScreen("fullPage", {
+        browser.checkFullPageScreen("fullPageCompareExpenses", {
           /* some options*/
         })
       ).not.equals(0, "expected chart to have changed");
