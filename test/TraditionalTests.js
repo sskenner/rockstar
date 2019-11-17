@@ -3,14 +3,14 @@ loginData = require("../data/loginData");
 
 describe("Login page UI elements, login functionality, table sort, canvas chart, and dynamic content test", () => {
   // Login Page UI Elements Test - Test to ensure Login Page UI elements look OK
-  it("should detect if logo image is existing", () => {
+  it("should detect if logo image exists", () => {
     console.log(browser.url(`${browser.options.baseUrl}`));
     expect(internetPage.logoImage.isExisting()).equals(
       true,
       "expected logo image to exist"
     );
   });
-  it("should detect if auth header is existing", () => {
+  it("should detect if auth header exists", () => {
     expect(internetPage.authHeader.isExisting()).equals(
       true,
       "expected auth header to exist"
@@ -22,7 +22,7 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
       'expected auth header text to be "Login Form"'
     );
   });
-  it("should detect if username form label is existing", () => {
+  it("should detect if username form label exists", () => {
     expect(internetPage.formLabelUsername.isExisting()).equals(
       true,
       "expected username form label to exist"
@@ -34,7 +34,7 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
       'expected username form label text to be "Username"'
     );
   });
-  it("should detect if username form input is existing", () => {
+  it("should detect if username form input exists", () => {
     expect(internetPage.username.isExisting()).equals(
       true,
       "expected username form input to exist"
@@ -46,7 +46,7 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
       'expected username form placeholder text to be "Enter your username"'
     );
   });
-  it("should detect if password form label is existing", () => {
+  it("should detect if password form label exists", () => {
     expect(internetPage.formLabelPassword.isExisting()).equals(
       true,
       "expected password form label to exist"
@@ -58,7 +58,7 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
       'expected password form label text to be "Password"'
     );
   });
-  it("should detect if password form input is existing", () => {
+  it("should detect if password form input exists", () => {
     expect(internetPage.password.isExisting()).equals(
       true,
       "expected password form input to exist"
@@ -70,25 +70,25 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
       'expected password form placeholder text to be "Enter your password"'
     );
   });
-  it("should detect if userMaleCircle icon is existing", () => {
+  it("should detect if userMaleCircle icon exists", () => {
     expect(internetPage.userMaleCircle.isExisting()).equals(
       true,
       "expected userMaleCircle icon to exist"
     );
   });
-  it("should detect if fingerprint icon is existing", () => {
+  it("should detect if fingerprint icon exists", () => {
     expect(internetPage.fingerprint.isExisting()).equals(
       true,
       "expected fingerprint icon to exist"
     );
   });
-  it("should detect if fingerprint icon is existing", () => {
+  it("should detect if fingerprint icon exists", () => {
     expect(internetPage.fingerprint.isExisting()).equals(
       true,
       "expected fingerprint icon to exist"
     );
   });
-  it("should detect if login button is existing", () => {
+  it("should detect if login button exists", () => {
     expect(internetPage.loginButton.isExisting()).equals(
       true,
       "expected login button to exist"
@@ -100,7 +100,7 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
       'expected login button text to be "Log In"'
     );
   });
-  it("should detect if remember me checkbox is existing", () => {
+  it("should detect if remember me checkbox exists", () => {
     expect(internetPage.checkbox.isExisting()).equals(
       true,
       "expected remember me checkbox to exist"
@@ -118,7 +118,7 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
       'expected remember me checkbox text to be "Remember Me"'
     );
   });
-  it("should detect if twitter button is existing", () => {
+  it("should detect if twitter button exists", () => {
     expect(internetPage.twitterButton.isExisting()).equals(
       true,
       "expected twitter button to exist"
@@ -130,7 +130,7 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
       'expected twitter button src to be "img/social-icons/twitter.png"'
     );
   });
-  it("should detect if facebook button is existing", () => {
+  it("should detect if facebook button exists", () => {
     expect(internetPage.facebookButton.isExisting()).equals(
       true,
       "expected facebook button to exist"
@@ -142,7 +142,7 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
       'expected facebook button src to be "img/social-icons/facebook.png"'
     );
   });
-  it("should detect if linkedin button is existing", () => {
+  it("should detect if linkedin button exists", () => {
     expect(internetPage.linkedinButton.isExisting()).equals(
       true,
       "expected linkedin button to exist"
@@ -343,6 +343,26 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
       })
     ).not.equals(0, "expected chart to have changed");
   });
-
-  // TODO: write tests for all elements on page
+  it('should check that ad1 exists', () => {
+    browser.url(`${browser.options.baseUrl}?showAd=true`);
+    internetPage.enterUsername(loginData.username);
+    internetPage.enterPassword(loginData.username);
+    internetPage.clickLoginButton();
+    // console.log(internetPage.flashSale1.isExisting());
+    expect(internetPage.flashSale1.isExisting()).equals(
+      true,
+      "expected ad1 to exist");
+  });
+  it('should check that ad2 exists', () => {
+    // TODO: rmv for test verification ONLY
+    // browser.url(`${browser.options.baseUrl}?showAd=true`);
+    // internetPage.enterUsername(loginData.username);
+    // internetPage.enterPassword(loginData.username);
+    // internetPage.clickLoginButton();
+    ////
+    // console.log(internetPage.flashSale2.isExisting());
+    expect(internetPage.flashSale2.isExisting()).equals(
+      true,
+      "expected ad2 to exists");
+  });
 });

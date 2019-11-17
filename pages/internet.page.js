@@ -69,6 +69,13 @@ class Internet {
   get addDataSet() {
     return $("#addDataset");
   }
+  get flashSale1() {
+    return $("#flashSale img")
+  }
+  get flashSale2() {
+    return $("#flashSale2 img")
+  }
+
 
   // functions
   getColumnText() {
