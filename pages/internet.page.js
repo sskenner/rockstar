@@ -49,7 +49,7 @@ class Internet {
     return $(".alert-warning");
   }
   get userAvatar() {
-    return $(".logged-user-w img")
+    return $(".logged-user-w img");
   }
   get table() {
     return $("tbody");
@@ -63,8 +63,12 @@ class Internet {
   get headerAmountSort() {
     return $("thead th:nth-child(5)");
   }
-
-
+  get compareExpenses() {
+    return $("#showExpensesChart");
+  }
+  get addDataSet() {
+    return $("#addDataset");
+  }
 
   // functions
   getColumnText() {
@@ -147,7 +151,7 @@ class Internet {
   }
   //////
   /**
-   * 
+   *
    * @param {string} text username to be entered
    */
   enterUsername(text) {
@@ -155,7 +159,7 @@ class Internet {
     this.username.setValue(text);
   }
   /**
-   * 
+   *
    * @param {string} text password to be entered
    */
   enterPassword(text) {
@@ -169,6 +173,5 @@ class Internet {
     this.loginButton.waitForDisplayed();
     this.loginButton.click();
   }
-
 }
 module.exports = new Internet();

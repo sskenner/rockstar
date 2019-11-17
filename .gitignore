@@ -1,3 +1,7 @@
+# Visual test data
+.tmp
+tests
+
 # Logs
 logs
 *.log

@@ -158,29 +158,29 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
   // Data-Driven Test - Tests for specific login functionality
   it("should enter username", () => {
     internetPage.enterUsername(loginData.username);
-    browser.pause(1000);
+    // browser.pause(1000);
     assert.equal(loginData.username, internetPage.username.getValue());
   });
   it("should clear username value", () => {
     internetPage.username.click();
     internetPage.username.clearValue();
-    browser.pause(1000);
+    // browser.pause(1000);
     assert.equal("", internetPage.username.getValue());
   });
   it("should enter password", () => {
     internetPage.enterPassword(loginData.password);
-    browser.pause(1000);
+    // browser.pause(1000);
     assert.equal(loginData.password, internetPage.password.getValue());
   });
   it("should clear password value", () => {
     internetPage.password.click();
     internetPage.password.clearValue();
-    browser.pause(1000);
+    // browser.pause(1000);
     assert.equal("", internetPage.password.getValue());
   });
   it("should detect if login error alert is displayed", () => {
     internetPage.clickLoginButton();
-    browser.pause(1000);
+    // browser.pause(1000);
     expect(internetPage.loginError.isDisplayed()).equals(
       true,
       "expected login error alert to be displayed"
@@ -197,14 +197,14 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
     internetPage.password.click();
     internetPage.password.clearValue();
     internetPage.clickLoginButton();
-    browser.pause(1000);
+    // browser.pause(1000);
     expect(internetPage.loginError.isDisplayed()).equals(
       true,
       "expected login error alert to be displayed"
     );
   });
   it("should detect if password is present error alert is correct", () => {
-    browser.pause(1000);
+    // browser.pause(1000);
     expect(internetPage.loginError.getText()).equals(
       "Password must be present",
       'expected login button text to be "Password must be present"'
@@ -215,14 +215,14 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
     internetPage.username.click();
     internetPage.username.clearValue();
     internetPage.clickLoginButton();
-    browser.pause(1000);
+    // browser.pause(1000);
     expect(internetPage.loginError.isDisplayed()).equals(
       true,
       "expected login error alert to be displayed"
     );
   });
   it("should detect if username is present error alert is correct", () => {
-    browser.pause(1000);
+    // browser.pause(1000);
     expect(internetPage.loginError.getText()).equals(
       "Username must be present",
       'expected login button text to be "Username must be present"'
@@ -233,12 +233,12 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
     internetPage.enterUsername(loginData.username);
     // internetPage.enterPassword(loginData.username);
     internetPage.clickLoginButton();
-    browser.pause(1000);
+    // browser.pause(1000);
     expect(internetPage.userAvatar.isExisting()).equals(
       true,
       "expected avatar image to exist"
     );
-    browser.pause(1000);
+    // browser.pause(1000);
   });
 
   // Table Sort Test - Tests for table sorting
@@ -260,9 +260,11 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
     let sortedClick = internetPage.getColumnTextClick();
     // TODO: rmv for test verification ONLY
     console.log(sortedClick);
-    var is_same = (sorted.length == sortedClick.length) && sorted.every(function(element, index) {
-      return element === sortedClick[index]; 
-    });
+    var is_same =
+      sorted.length == sortedClick.length &&
+      sorted.every(function(element, index) {
+        return element === sortedClick[index];
+      });
     console.log(is_same);
     // //
     expect(is_same).equals(
@@ -288,6 +290,58 @@ describe("Login page UI elements, login functionality, table sort, canvas chart,
       true,
       "expected data to be in tact after sort"
     );
+  });
+
+  // Canvas Chart Test - Tests for the addition of 2019 data
+  it("should save some screenshots", () => {
+    internetPage.compareExpenses.click();
+    // Save a screen
+    browser.saveScreen("examplePaged", {
+      /* some options*/
+    });
+
+    // // Save an element
+    // browser.saveElement($('#element-id'), 'firstButtonElement', { /* some options*/ });
+
+    // Save a full page screens
+    browser.saveFullPageScreen("fullPage", {
+      /* some options*/
+    });
+  });
+  it("should compare successful with a baseline chart", () => {
+    // browser.url('https://demo.applitools.com/hackathonChartV2.html');
+    // TODO: rmv for test verification ONLY
+    // browser.url(`${browser.options.baseUrl}`);
+    // internetPage.enterUsername(loginData.username);
+    // internetPage.enterPassword(loginData.username);
+    // internetPage.clickLoginButton();
+    // browser.pause(5000);
+    // if(internetPage.compareExpenses){
+    //   internetPage.compareExpenses.scrollIntoView();
+    //   internetPage.compareExpenses.click();
+    // }
+    // Check a full page screens
+    expect(
+      browser.checkFullPageScreen("fullPage", {
+        /* some options*/
+      })
+    ).equals(0, "expected chart to remain the same");
+  });
+  it("should compare un-successful with a baseline chart", () => {
+    // browser.url('https://demo.applitools.com/hackathonChartV2.html');
+    // TODO: rmv for test verification ONLY
+    // browser.url(`${browser.options.baseUrl}`);
+    // internetPage.enterUsername(loginData.username);
+    // internetPage.enterPassword(loginData.username);
+    // internetPage.clickLoginButton();
+    // internetPage.compareExpenses.click();
+    internetPage.addDataSet.click();
+    // Check a full page screens
+    expect(
+      browser.checkFullPageScreen("fullPage", {
+        /* some options*/
+      })
+    ).not.equals(0, "expected chart to have changed");
   });
 
   // TODO: write tests for all elements on page
