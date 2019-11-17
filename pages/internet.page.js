@@ -163,6 +163,7 @@ class Internet {
    */
   enterUsername(text) {
     this.username.waitForDisplayed();
+    this.username.click();
     this.username.setValue(text);
   }
   /**
@@ -171,6 +172,7 @@ class Internet {
    */
   enterPassword(text) {
     this.password.waitForDisplayed();
+    this.password.click();
     this.password.setValue(text);
   }
   /**
