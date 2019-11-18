@@ -217,16 +217,14 @@ describe("Traditional Approach", () => {
       it("should clear username value", () => {
         // internetPage.enterUsername(loginData.username);
         internetPage.username.click();
-        internetPage.username.clearElement();
-        // internetPage.username.clearValue();
+        internetPage.username.clearValue();
         // browser.pause(1000);
         assert.equal("", internetPage.username.getValue());
       });
       it("should clear password value", () => {
         // internetPage.enterPassword(loginData.password);
         internetPage.password.click();
-        internetPage.password.clearElement();
-        // internetPage.password.clearValue();
+        internetPage.password.clearValue();
         // browser.pause(1000);
         assert.equal("", internetPage.password.getValue());
       });
@@ -235,8 +233,7 @@ describe("Traditional Approach", () => {
       it("should detect if login error alert is displayed", () => {
         internetPage.clickLoginButton();
         // browser.pause(1000);
-        expect(internetPage.loginError.isVisible()).equals(true,"expected login error alert to be displayed");
-        // expect(internetPage.loginError.isDisplayed()).equals(true,"expected login error alert to be displayed");
+        expect(internetPage.loginError.isDisplayed()).equals(true,"expected login error alert to be displayed");
       });
       it("should get correct login error alert text", () => {
         expect(internetPage.loginError.getText()).equals(
@@ -247,12 +244,10 @@ describe("Traditional Approach", () => {
       it("should detect if password is present error alert is displayed", () => {
         internetPage.enterUsername(loginData.username);
         internetPage.password.click();
-        internetPage.password.clearElement();
-        // internetPage.password.clearValue();
+        internetPage.password.clearValue();
         internetPage.clickLoginButton();
         // browser.pause(1000);
-        expect(internetPage.loginError.isVisible()).equals(
-        // expect(internetPage.loginError.isDisplayed()).equals(
+        expect(internetPage.loginError.isDisplayed()).equals(
           true,
           "expected login error alert to be displayed"
         );
@@ -267,13 +262,11 @@ describe("Traditional Approach", () => {
       it("should detect if username is present error alert is displayed", () => {
         internetPage.enterPassword(loginData.password);
         internetPage.username.click();
-        internetPage.username.clearElement();
-        // internetPage.username.clearValue();
+        internetPage.username.clearValue();
         internetPage.clickLoginButton();
         // browser.pause(1000);
-        expect(internetPage.loginError.isVisible()).equals(
-        // expect(internetPage.loginError.isDisplayed()).equals(
-        true,
+        expect(internetPage.loginError.isDisplayed()).equals(
+          true,
           "expected login error alert to be displayed"
         );
       });
