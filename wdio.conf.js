@@ -1,6 +1,6 @@
 // npm run test
 // npm test -- --spec ./test/XXX.js
-// ENV=v1|v2 npm run test
+// ENV=v1|v2 npm run test xxx.js
 
 const url = require('./urls')
 const ENV = process.env.ENV
@@ -32,8 +32,11 @@ exports.config = {
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
+    // specs: [
+    //     './test/**/*.js',
+    // ],
     specs: [
-        './test/**/*.js'
+        './test/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [

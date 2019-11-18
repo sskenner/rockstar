@@ -1,5 +1,5 @@
-const internetPage = require("../pages/internet.page");
-loginData = require("../data/loginData");
+const internetPage = require("../../pages/internet.page");
+loginData = require("../../data/loginData");
 
 describe("Traditional Approach", () => {
   // Test to ensure Login Page UI elements look OK
@@ -34,7 +34,7 @@ describe("Traditional Approach", () => {
           browser.checkFullPageScreen("fullPageLogin", {
             /* some options*/
           })
-        ).equals(0, "expected chart to remain the same");
+        ).equals(0, "expected page to remain the same");
       });
     });
     describe('Visual elements existance test', () => {
@@ -202,7 +202,7 @@ describe("Traditional Approach", () => {
   });
   
   // Test to ensure specific login functionality
-  describe('Data-Driven suite', () => {
+  describe.only('Data-Driven suite', () => {
     describe('Form data entry test', () => {
       it("should enter username", () => {
         internetPage.enterUsername(loginData.username);
