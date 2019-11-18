@@ -139,9 +139,10 @@ exports.config = {
             blockOutStatusBar: true,
             blockOutToolBar: true,
             // ... more options
-        }], ['chromedriver'], 
+        }], ['chromedriver'], ['applitools'],
     ],
-    
+    // applitoolsKey: process.env.APPLITOOLS_KEY,    
+    applitoolsKey: process.env.APPLITOOLS_KEY,    
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks.html
