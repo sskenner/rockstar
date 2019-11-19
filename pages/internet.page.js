@@ -162,8 +162,8 @@ class Internet {
    * @param {string} text username to be entered
    */
   enterUsername(text) {
-    this.username.waitForVisible();
-    // this.username.waitForDisplayed();
+    // this.username.waitForVisible();
+    this.username.waitForDisplayed();
     this.username.click();
     this.username.setValue(text);
   }
@@ -172,8 +172,8 @@ class Internet {
    * @param {string} text password to be entered
    */
   enterPassword(text) {
-    this.password.waitForVisible();
-    // this.password.waitForDisplayed();
+    // this.password.waitForVisible();
+    this.password.waitForDisplayed();
     this.password.click();
     this.password.setValue(text);
   }
@@ -181,8 +181,8 @@ class Internet {
    * click the login button
    */
   clickLoginButton() {
-    this.loginButton.waitForVisible();
-    // this.loginButton.waitForDisplayed();
+    // this.loginButton.waitForVisible();
+    this.loginButton.waitForDisplayed();
     this.loginButton.click();
   }
 }
