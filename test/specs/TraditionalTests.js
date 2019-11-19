@@ -4,7 +4,7 @@ loginData = require("../../data/loginData");
 describe("Traditional Approach", () => {
   // Test to ensure Login Page UI elements look OK
   describe('Login Page UI suite', () => {
-    describe('Visusal regression comparison', () => {
+    describe.only('Visusal regression comparison', () => {
       beforeEach(() => {
         browser.url(`${browser.options.baseUrl}`);
       });
@@ -202,7 +202,7 @@ describe("Traditional Approach", () => {
   });
   
   // Test to ensure specific login functionality
-  describe.only('Data-Driven suite', () => {
+  describe('Data-Driven suite', () => {
     describe('Form data entry test', () => {
       it("should enter username", () => {
         internetPage.enterUsername(loginData.username);
