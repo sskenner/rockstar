@@ -81,7 +81,7 @@ class Internet {
   getColumnText() {
     let tableArrayColumn = [];
     this.tableColumns.forEach(element => {
-      console.log(element.getText());
+      // console.log(element.getText());
       let tableColumnCurr = element.getText();
       let tableColumnNum = tableColumnCurr.replace(/[^0-9-\.]+/g, "");
       tableArrayColumn.push(tableColumnNum);

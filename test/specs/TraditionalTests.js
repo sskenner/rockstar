@@ -1,40 +1,22 @@
 const internetPage = require("../../pages/internet.page");
 loginData = require("../../data/loginData");
 
+function assertDiff(results) {
+  results.forEach((result) => assert.ok(result.isExactSameImage));
+}
 describe("Traditional Approach", () => {
   // Test to ensure Login Page UI elements look OK
   describe('Login Page UI suite', () => {
-    describe.only('Visusal regression comparison', () => {
-      beforeEach(() => {
-        browser.url(`${browser.options.baseUrl}`);
-      });
+    describe('Visusal regression comparison', () => {
       it("should save some screenshots", () => {
-        // browser.url(`${browser.options.baseUrl}`);
-        // Save a screen
-        browser.saveScreen("examplePagedLogin", {
-          /* some options*/
-        });
-    
-        // // Save an element
-        // browser.saveElement($('#element-id'), 'firstButtonElement', { /* some options*/ });
-    
-        // Save a full page screens
-        browser.saveFullPageScreen("fullPageLogin", {
-          /* some options*/
-        });
+        /**
+       * unable to test without visual regression
+       */
       });
       it("should compare successful for a baseline with existing elements", () => {
-        // browser.url('https://demo.applitools.com/hackathonChartV2.html');
-        // TODO: rmv for test verification ONLY
-        // browser.url(`${browser.options.baseUrl}`);
-        // browser.pause(5000);
-  
-        // Check a full page screens
-        expect(
-          browser.checkFullPageScreen("fullPageLogin", {
-            /* some options*/
-          })
-        ).equals(0, "expected page to remain the same");
+        /**
+       * unable to test without visual regression
+       */
       });
     });
     describe('Visual elements existance test', () => {
@@ -312,20 +294,20 @@ describe("Traditional Approach", () => {
       // console.log(internetPage.getColumnTextSorted());
       //
       let unSorted = internetPage.getColumnText();
-      console.log(unSorted);
+      // console.log(unSorted);
       //
       let sorted = internetPage.getColumnTextSorted();
       // let sorted = [ '-244.00', '-320.00', '1250.00', '17.99', '340.00', '952.23' ];
-      console.log(sorted);
+      // console.log(sorted);
       let sortedClick = internetPage.getColumnTextClick();
       // TODO: rmv for test verification ONLY
-      console.log(sortedClick);
+      // console.log(sortedClick);
       var is_same =
         sorted.length == sortedClick.length &&
         sorted.every(function(element, index) {
           return element === sortedClick[index];
         });
-      console.log(is_same);
+      // console.log(is_same);
       // //
       expect(is_same).equals(
         true,
@@ -336,11 +318,11 @@ describe("Traditional Approach", () => {
       // // TODO: rmv for test verification ONLY
       // console.log(internetPage.getRowText());
       let unSorted = internetPage.getRowText();
-      console.log(unSorted);
+      // console.log(unSorted);
       let sorted = internetPage.getRowTextSorted();
       // TODO: rmv for test verification ONLY
-      console.log(sorted);
-      console.log(internetPage.areArraysEqualSets(unSorted, sorted));
+      // console.log(sorted);
+      // console.log(internetPage.areArraysEqualSets(unSorted, sorted));
       //
       expect(internetPage.areArraysEqualSets(unSorted, sorted)).equals(
         true,
@@ -351,59 +333,27 @@ describe("Traditional Approach", () => {
 
   // Tests to ensure the addition of 2019 data
   describe('Canvas Chart test suite', () => {
-    beforeEach(() => {
-      browser.url(`${browser.options.baseUrl}`);
-    });
-    it("should save some screenshots", () => {
-      internetPage.enterUsername(loginData.username);
-      internetPage.enterPassword(loginData.username);
-      internetPage.clickLoginButton();
-      internetPage.compareExpenses.click();
-      // Save a screen
-      browser.saveScreen("examplePagedCompareExpenses", {
-        /* some options*/
-      });
-  
-      // // Save an element
-      // browser.saveElement($('#element-id'), 'firstButtonElement', { /* some options*/ });
-  
-      // Save a full page screens
-      browser.saveFullPageScreen("fullPageCompareExpenses", {
-        /* some options*/
-      });
-    });
-    it("should compare successful with a baseline chart", () => {
-      // browser.url('https://demo.applitools.com/hackathonChartV2.html');
-      // TODO: rmv for test verification ONLY
-      // browser.url(`${browser.options.baseUrl}`);
-      internetPage.enterUsername(loginData.username);
-      internetPage.enterPassword(loginData.username);
-      internetPage.clickLoginButton();
-      internetPage.compareExpenses.click();
-      // browser.pause(5000);
+    
 
-      // Check a full page screens
-      expect(
-        browser.checkFullPageScreen("fullPageCompareExpenses", {
-          /* some options*/
-        })
-      ).equals(0, "expected chart to remain the same");
+  //   beforeEach(() => {
+  //     browser.url(`${browser.options.baseUrl}`);
+  //   });
+    it("should save some screenshots", () => {
+      /**
+       * unable to test without visual regression
+       */
+  
+      });
+  
+    it("should compare successful with a baseline chart", () => {
+      /**
+       * unable to test without visual regression
+       */
     });
     it("should compare un-successful with a baseline chart", () => {
-      // browser.url('https://demo.applitools.com/hackathonChartV2.html');
-      // TODO: rmv for test verification ONLY
-      // browser.url(`${browser.options.baseUrl}`);
-      internetPage.enterUsername(loginData.username);
-      internetPage.enterPassword(loginData.username);
-      internetPage.clickLoginButton();
-      internetPage.compareExpenses.click();
-      internetPage.addDataSet.click();
-      // Check a full page screens
-      expect(
-        browser.checkFullPageScreen("fullPageCompareExpenses", {
-          /* some options*/
-        })
-      ).not.equals(0, "expected chart to have changed");
+      /**
+       * unable to test without visual regression
+       */
     });
   });
 
