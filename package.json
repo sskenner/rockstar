@@ -4,8 +4,8 @@
   "description": "rockstar hackathon",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/wdio wdio.conf.js --spec",
-    "testappl": "node ./node_modules/.bin/wdio wdio.conf.js --spec"
+    "test": "./node_modules/.bin/wdio wdio.conf.js --specs",
+    "testappl": "node ./node_modules/.bin/wdio wdio.conf.js --specs"
   },
   "keywords": [],
   "author": "santana kenner",
@@ -16,10 +16,10 @@
     "chai-webdriverio": "^1.0.0",
     "wdio-chromedriver-service": "^5.0.2",
     "wdio-dot-reporter": "0.0.10",
+    "wdio-image-comparison-service": "^1.8.0",
     "wdio-mocha-framework": "^0.6.4",
     "wdio-selenium-standalone-service": "0.0.12",
-    "wdio-spec-reporter": "^0.1.5",
-    "wdio-image-comparison-service": "^1.8.0"
+    "wdio-spec-reporter": "^0.1.5"
   },
   "dependencies": {
     "webdriverio": "^4.14.4"
