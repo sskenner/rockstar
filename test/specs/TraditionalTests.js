@@ -314,7 +314,7 @@ describe("Traditional Approach", () => {
         "expected column amount data to be sorted in ascending order"
       );
     });
-    it("should keep data in tact after sorting", () => {
+    it("should keep data intact after sorting", () => {
       // // TODO: rmv for test verification ONLY
       // console.log(internetPage.getRowText());
       let unSorted = internetPage.getRowText();
@@ -326,7 +326,7 @@ describe("Traditional Approach", () => {
       //
       expect(internetPage.areArraysEqualSets(unSorted, sorted)).equals(
         true,
-        "expected data to be in tact after sort"
+        "expected data to be intact after sort"
       );
     });
   });

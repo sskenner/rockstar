@@ -12,14 +12,9 @@ eyes.setApiKey(process.env.APPLITOOLS_API_KEY);
 // gather tests into separate groupings
 describe("Batches", () => {
   // single test case
-  it("Page should look ok", async function() {
-  // it("Page should look ok", () => {
-    // browser.url(`${browser.options.baseUrl}`);
-    // browser.url("https://demo.applitools.com/hackathon.html");
-
+  it("Login page should look ok", async function() {
     try {
       browser.windowHandleFullscreen();
-      // browser.takeSnapshot('Hackathon Test');
       const viewportSize = browser.getViewportSize();
 
       // set batch name & ID
@@ -32,11 +27,6 @@ describe("Batches", () => {
         "Visual elements exist",
         viewportSize
       );
-      // await eyes.open(
-      //   browser,
-      //   "Test Login Page UI",
-      //   "Visual elements exist"
-      // );
       // visual checkpoint 1
       await eyes.check("Login page", Target.window());
 
@@ -47,11 +37,9 @@ describe("Batches", () => {
       await eyes.abortIfNotClosed();
     }
   });
-  it("Error should be thrown if login details are missing", async function() {
-  
+  it("Login functionality should work as expected", async function() {
     try {
       browser.windowHandleFullscreen();
-      // browser.takeSnapshot('Hackathon Test');
       const viewportSize = browser.getViewportSize();
 
       // set batch name & ID
@@ -61,12 +49,30 @@ describe("Batches", () => {
       await eyes.open(
         browser,
         "Data-Driven Test",
-        "Error thrown if login details are missing",
+        "Login page functionality works",
         viewportSize
       );
       // browser actions
+      await eyes.check("login details not entered", Target.window());
       browser.click("#log-in");
-      await eyes.check("Login page", Target.window());
+      await eyes.check("was correct login details not entered error thrown", Target.window());
+      browser.refresh();
+      browser.setValue("#username", "Username");
+      await eyes.check("username only entered", Target.window());
+      browser.click("#log-in");
+      await eyes.check("was correct username only error thrown", Target.window());
+      browser.refresh();
+      browser.setValue("#password", "Password");
+      await eyes.check("password only entered", Target.window());
+      browser.click("#log-in");
+      await eyes.check("was correct password only error thrown", Target.window());
+      browser.refresh();
+      browser.setValue("#username", "Username");
+      browser.setValue("#password", "Password");
+      await eyes.check("complete login details entered", Target.window());
+      browser.click("#log-in");
+      await eyes.check("was login successful if complete login details were entered", Target.window());
+
       // end test
       await eyes.close();
     } finally {
@@ -74,11 +80,9 @@ describe("Batches", () => {
       await eyes.abortIfNotClosed();
     }
   });
-  it.only("Error should be thrown if only enter username", async function() {
-  
+  it.only("Table Sort functionality should work as expected", async function() {
     try {
       browser.windowHandleFullscreen();
-      // browser.takeSnapshot('Hackathon Test');
       const viewportSize = browser.getViewportSize();
 
       // set batch name & ID
@@ -87,20 +91,23 @@ describe("Batches", () => {
       // start test & set viewport
       await eyes.open(
         browser,
-        "Data-Driven Test Username only",
-        "Error thrown if ontly the username is entered",
+        "Table Sort Test",
+        "Table functionality works and content is valid",
         viewportSize
       );
       // browser actions
-      // browser.waitForVisible("#username");
       browser.setValue("#username", "Username");
-      // browser.pause(5000);
-      // browser.waitUntil(function () {
-      //   return browser.getText("#username") === "Username"
-      // }, 2000, 'expected text to be visible after 2s');
-      await eyes.check("Login page 2", Target.window());
+      browser.setValue("#password", "Password");
+      await eyes.check("login works", Target.window());
       browser.click("#log-in");
-      await eyes.check("Login page 3", Target.window());
+      await eyes.check("inital amount column sort order", Target.window());
+      browser.click("thead th:nth-child(5)");
+      await eyes.check("was amount column sorted in ascending order", Target.window());
+      // browser.click("thead th:nth-child(5)");
+      // await eyes.check("inital row cell alignment", Target.window());
+      browser.click("thead th:nth-child(5)");
+      await eyes.check("was table content kept intact", Target.window());
+
       // end test
       await eyes.close();
     } finally {
