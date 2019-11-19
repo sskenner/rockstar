@@ -1,4 +1,4 @@
-// npm run test
+ // npm run test
 // npm test -- --spec ./test/XXX.js
 // ENV=v1|v2 npm run test xxx.js
 
