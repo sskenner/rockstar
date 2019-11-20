@@ -80,7 +80,7 @@ describe("Batches", () => {
       await eyes.abortIfNotClosed();
     }
   });
-  it.only("Table Sort functionality should work as expected", async function() {
+  it("Table Sort functionality should work as expected", async function() {
     try {
       browser.windowHandleFullscreen();
       const viewportSize = browser.getViewportSize();
@@ -92,7 +92,7 @@ describe("Batches", () => {
       await eyes.open(
         browser,
         "Table Sort Test",
-        "Table functionality works and content is valid",
+        "Table Sort functionality works and content is valid",
         viewportSize
       );
       // browser actions
@@ -114,5 +114,70 @@ describe("Batches", () => {
       // if test aborts b4 eyes.close was called
       await eyes.abortIfNotClosed();
     }
+  });
+  it.only("Canvas Chart functionality should work as expected", async function() {
+    try {
+      browser.windowHandleFullscreen();
+      const viewportSize = browser.getViewportSize();
+
+      // set batch name & ID
+      eyes.setBatch("Hackathon", "Modern Approach");
+
+      // start test & set viewport
+      await eyes.open(
+        browser,
+        "Canvas Chart Test",
+        "Canvas Chart data is valid & updates",
+        viewportSize
+      );
+      // browser actions
+      browser.setValue("#username", "Username");
+      browser.setValue("#password", "Password");
+      await eyes.check("login works", Target.window());
+      browser.click("#log-in");
+      // await eyes.check("inital amount column sort order", Target.window());
+      await eyes.check("navigation works", Target.window());
+      browser.click("#log-in");
+      browser.click("#showExpensesChart");
+      await eyes.check("was data still valid", Target.window());
+      // browser.click("thead th:nth-child(5)");
+      // await eyes.check("inital row cell alignment", Target.window());
+      browser.click("#addDataset");
+      await eyes.check("was data added", Target.window());
+
+      // end test
+      await eyes.close();
+    } finally {
+      // if test aborts b4 eyes.close was called
+      await eyes.abortIfNotClosed();
+    }
+  });
+  it.only("Canvas Chart functionality should work as expected", async function() {
+    
+    // Navigate to URL.
+    browser.url('https://demo.applitools.com/hackathon.html?showAd=true')
+
+    try {
+      browser.windowHandleFullscreen();
+      const viewportSize = browser.getViewportSize();
+
+      // set batch name & ID
+      eyes.setBatch("Hackathon", "Modern Approach");
+
+      // start test & set viewport
+      await eyes.open(
+        browser,
+        "Dynamic Content Test",
+        "Gifs are validated",
+        "Canvas Chart data is valid & updates",
+        viewportSize
+      );
+      // browser actions
+      browser.setValue("#username", "Username");
+      browser.setValue("#password", "Password");
+      await eyes.check("login works", Target.window());
+      browser.click("#log-in");
+      await eyes.check("was gifs existing", Target.window());
+      // TODO: test as layout region for changing gif
   });
 });
