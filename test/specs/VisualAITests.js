@@ -7,7 +7,8 @@ const { Eyes, Target } = require("@applitools/eyes.webdriverio");
 const eyes = new Eyes();
 
 // set private API key
-eyes.setApiKey(process.env.APPLITOOLS_API_KEY);
+// eyes.setApiKey(process.env.APPLITOOLS_API_KEY);
+eyes.setApiKey('398sAuMHM105JOGsddZeGVITEza106Gbvdjn899zjWL104K7uJ0110');
 
 // gather tests into separate groupings
 describe("Batches", () => {
