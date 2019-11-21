@@ -20,7 +20,7 @@ Rockstar requires [Node.js](https://nodejs.org/) to run.
 From a git initialized directory, clone the projects repository.
 
 ```sh
-$ git clone https://github.com/sskenner/rockstar
+$ git clone -b sk/hackathon/review https://github.com/sskenner/rockstar.git
 ```
 
 Install the dependencies and devDependencies and start the server.
