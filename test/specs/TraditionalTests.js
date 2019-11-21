@@ -69,12 +69,6 @@ describe("Traditional Approach", () => {
           "expected fingerprint icon to exist"
         );
       });
-      // it("should detect if fingerprint icon exists", () => {
-      //   expect(internetPage.fingerprint.isExisting()).equals(
-      //     true,
-      //     "expected fingerprint icon to exist"
-      //   );
-      // });
       it("should detect if login button exists", () => {
         expect(internetPage.loginButton.isExisting()).equals(
           true,
@@ -161,26 +155,6 @@ describe("Traditional Approach", () => {
         );
       });
     });
-    // describe('Image elements source test', () => {
-    //   it("should detect if twitter button src is correct", () => {
-    //     expect(internetPage.twitterButton.getAttribute("src")).equals(
-    //       "https://demo.applitools.com/img/social-icons/twitter.png",
-    //       'expected twitter button src to be "img/social-icons/twitter.png"'
-    //     );
-    //   });
-    //   it("should detect if facebook button src is correct", () => {
-    //     expect(internetPage.facebookButton.getAttribute("src")).equals(
-    //       "https://demo.applitools.com/img/social-icons/facebook.png",
-    //       'expected facebook button src to be "img/social-icons/facebook.png"'
-    //     );
-    //   });
-    //   it("should detect if linkedin button src is correct", () => {
-    //     expect(internetPage.linkedinButton.getAttribute("src")).equals(
-    //       "https://demo.applitools.com/img/social-icons/linkedin.png",
-    //       'expected linkedin button src to be "img/social-icons/linkedin.png"'
-    //     );
-    //   });
-    // });
   });
   
   // Test to ensure specific login functionality
@@ -188,37 +162,27 @@ describe("Traditional Approach", () => {
     describe('Form data entry test', () => {
       it("should enter username", () => {
         internetPage.enterUsername(loginData.username);
-        // browser.pause(1000);
         assert.equal(loginData.username, internetPage.username.getValue());
       });
       it("should enter password", () => {
         internetPage.enterPassword(loginData.password);
-        // browser.pause(1000);
         assert.equal(loginData.password, internetPage.password.getValue());
       });
       it("should clear username value", () => {
-        // internetPage.enterUsername(loginData.username);
         internetPage.username.click();
         internetPage.username.clearElement();
-        // internetPage.username.clearValue();
-        // browser.pause(1000);
         assert.equal("", internetPage.username.getValue());
       });
       it("should clear password value", () => {
-        // internetPage.enterPassword(loginData.password);
         internetPage.password.click();
         internetPage.password.clearElement();
-        // internetPage.password.clearValue();
-        // browser.pause(1000);
         assert.equal("", internetPage.password.getValue());
       });
     });
     describe('Login error alert display test', () => {
       it("should detect if login error alert is displayed", () => {
         internetPage.clickLoginButton();
-        // browser.pause(1000);
         expect(internetPage.loginError.isVisible()).equals(true,"expected login error alert to be displayed");
-        // expect(internetPage.loginError.isDisplayed()).equals(true,"expected login error alert to be displayed");
       });
       it("should get correct login error alert text", () => {
         expect(internetPage.loginError.getText()).equals(
@@ -230,17 +194,13 @@ describe("Traditional Approach", () => {
         internetPage.enterUsername(loginData.username);
         internetPage.password.click();
         internetPage.password.clearElement();
-        // internetPage.password.clearValue();
         internetPage.clickLoginButton();
-        // browser.pause(1000);
         expect(internetPage.loginError.isVisible()).equals(
-        // expect(internetPage.loginError.isDisplayed()).equals(
           true,
           "expected login error alert to be displayed"
         );
       });
       it("should detect if password is present error alert is correct", () => {
-        // browser.pause(1000);
         expect(internetPage.loginError.getText()).equals(
           "Password must be present",
           'expected login button text to be "Password must be present"'
@@ -250,17 +210,13 @@ describe("Traditional Approach", () => {
         internetPage.enterPassword(loginData.password);
         internetPage.username.click();
         internetPage.username.clearElement();
-        // internetPage.username.clearValue();
         internetPage.clickLoginButton();
-        // browser.pause(1000);
         expect(internetPage.loginError.isVisible()).equals(
-        // expect(internetPage.loginError.isDisplayed()).equals(
         true,
           "expected login error alert to be displayed"
         );
       });
       it("should detect if username is present error alert is correct", () => {
-        // browser.pause(1000);
         expect(internetPage.loginError.getText()).equals(
           "Username must be present",
           'expected login button text to be "Username must be present"');
@@ -268,16 +224,13 @@ describe("Traditional Approach", () => {
     });
     describe('Successful login test', () => {
       it("should login to app with username & password", () => {
-        // browser.url(`${browser.options.baseUrl}`)
         internetPage.enterUsername(loginData.username);
         internetPage.enterPassword(loginData.username);
         internetPage.clickLoginButton();
-        // browser.pause(1000);
         expect(internetPage.userAvatar.isExisting()).equals(
           true,
           "expected avatar image to exist"
         );
-        // browser.pause(1000);
       });
     });    
   });
@@ -289,41 +242,22 @@ describe("Traditional Approach", () => {
       internetPage.enterUsername(loginData.username);
       internetPage.enterPassword(loginData.username);
       internetPage.clickLoginButton();
-      // // TODO: rmv for test verification ONLY
-      // console.log(internetPage.getColumnText());
-      // console.log(internetPage.getColumnTextSorted());
-      //
       let unSorted = internetPage.getColumnText();
-      // console.log(unSorted);
-      //
       let sorted = internetPage.getColumnTextSorted();
-      // let sorted = [ '-244.00', '-320.00', '1250.00', '17.99', '340.00', '952.23' ];
-      // console.log(sorted);
       let sortedClick = internetPage.getColumnTextClick();
-      // TODO: rmv for test verification ONLY
-      // console.log(sortedClick);
       var is_same =
         sorted.length == sortedClick.length &&
         sorted.every(function(element, index) {
           return element === sortedClick[index];
         });
-      // console.log(is_same);
-      // //
       expect(is_same).equals(
         true,
         "expected column amount data to be sorted in ascending order"
       );
     });
     it("should keep data intact after sorting", () => {
-      // // TODO: rmv for test verification ONLY
-      // console.log(internetPage.getRowText());
       let unSorted = internetPage.getRowText();
-      // console.log(unSorted);
       let sorted = internetPage.getRowTextSorted();
-      // TODO: rmv for test verification ONLY
-      // console.log(sorted);
-      // console.log(internetPage.areArraysEqualSets(unSorted, sorted));
-      //
       expect(internetPage.areArraysEqualSets(unSorted, sorted)).equals(
         true,
         "expected data to be intact after sort"
@@ -335,9 +269,6 @@ describe("Traditional Approach", () => {
   describe('Canvas Chart test suite', () => {
     
 
-  //   beforeEach(() => {
-  //     browser.url(`${browser.options.baseUrl}`);
-  //   });
     it("should save some screenshots", () => {
       /**
        * unable to test without visual regression
@@ -364,19 +295,11 @@ describe("Traditional Approach", () => {
       internetPage.enterUsername(loginData.username);
       internetPage.enterPassword(loginData.username);
       internetPage.clickLoginButton();
-      // console.log(internetPage.flashSale1.isExisting());
       expect(internetPage.flashSale1.isExisting()).equals(
         true,
         "expected ad1 to exist");
     });
     it('should check that ad2 exists', () => {
-      // TODO: rmv for test verification ONLY
-      // browser.url(`${browser.options.baseUrl}?showAd=true`);
-      // internetPage.enterUsername(loginData.username);
-      // internetPage.enterPassword(loginData.username);
-      // internetPage.clickLoginButton();
-      ////
-      // console.log(internetPage.flashSale2.isExisting());
       expect(internetPage.flashSale2.isExisting()).equals(
         true,
         "expected ad2 to exists");

@@ -103,8 +103,6 @@ describe("Batches", () => {
       await eyes.check("inital amount column sort order", Target.window());
       browser.click("thead th:nth-child(5)");
       await eyes.check("was amount column sorted in ascending order", Target.window());
-      // browser.click("thead th:nth-child(5)");
-      // await eyes.check("inital row cell alignment", Target.window());
       browser.click("thead th:nth-child(5)");
       await eyes.check("was table content kept intact", Target.window());
 
@@ -118,8 +116,6 @@ describe("Batches", () => {
   it("Canvas Chart functionality should work as expected", async function() {
     try {
       browser.windowHandleFullscreen();
-      // const viewportSize = browser.getViewportSize();
-      // Start the test and set the browser's viewport size to 
 
       // set batch name & ID
       eyes.setBatch("Hackathon", "Modern Approach");
@@ -129,22 +125,16 @@ describe("Batches", () => {
         browser,
         "4 Canvas Chart Test",
         "Canvas Chart data is valid & updates",
-        // viewportSize
         { width: 1248, height:  851}
       );
       // browser actions
-      // await eyes.check("Login page", Target.window());
       browser.setValue("#username", "Username");
       browser.setValue("#password", "Password");
       await eyes.check("login works", Target.window());
       browser.click("#log-in");
-      // await eyes.check("inital amount column sort order", Target.window());
       await eyes.check("navigation works", Target.window());
-      // browser.click("#log-in");
       browser.click("#showExpensesChart");
       await eyes.check("was data still valid", Target.window());
-      // browser.click("thead th:nth-child(5)");
-      // await eyes.check("inital row cell alignment", Target.window());
       browser.click("#addDataset");
       await eyes.check("was data added", Target.window());
 
@@ -181,7 +171,6 @@ describe("Batches", () => {
       await eyes.check("login works", Target.window());
       browser.click("#log-in");
       await eyes.check("was gifs existing", Target.window());
-      // TODO: test as layout region for changing gif
 
       browser.url('https://demo.applitools.com/hackathonV2.html?showAd=true');
 
@@ -190,31 +179,20 @@ describe("Batches", () => {
         
         const viewportSize = browser.getViewportSize();
   
-        // // set batch name & ID
-        // eyes.setBatch("Hackathon", "Modern Approach");
-  
-        // start test & set viewport
-        // await eyes.open(
-        //   browser,
-        //   "Dynamic Content Test",
-        //   "Gifs are validated",
-        //   viewportSize
-        // );
         // browser actions
         browser.setValue("#username", "Username");
         browser.setValue("#password", "Password");
         await eyes.check("login works", Target.window());
         browser.click("#log-in");
         await eyes.check("was gifs existing", Target.window());
-        // TODO: test as layout region for changing gif
-      // end test
+        
+        // end test
         await eyes.close();
       } finally {
         // if test aborts b4 eyes.close was called
         await eyes.abortIfNotClosed();
       }
       // end test
-      // await eyes.close();
     } finally {
       // if test aborts b4 eyes.close was called
       await eyes.abortIfNotClosed();

@@ -81,7 +81,6 @@ class Internet {
   getColumnText() {
     let tableArrayColumn = [];
     this.tableColumns.forEach(element => {
-      // console.log(element.getText());
       let tableColumnCurr = element.getText();
       let tableColumnNum = tableColumnCurr.replace(/[^0-9-\.]+/g, "");
       tableArrayColumn.push(tableColumnNum);
@@ -92,17 +91,13 @@ class Internet {
     let sorted = this.getColumnText().sort(function(a, b) {
       return a - b;
     });
-    // // TODO: rmv for test verification ONLY
-    // sorted.pop();
-    // sorted.push(20.00);
-    // //
+
     return sorted;
   }
   getColumnTextClick() {
     let tableArrayColumnClick = [];
     this.headerAmountSort.click();
     this.tableColumns.forEach(element => {
-      // console.log(element.getText());
       let tableColumnCurrClick = element.getText();
       let tableColumnNumClick = tableColumnCurrClick.replace(/[^0-9-\.]+/g, "");
       tableArrayColumnClick.push(tableColumnNumClick);
@@ -112,7 +107,6 @@ class Internet {
   getRowText() {
     let tableArrayRow = [];
     this.tableRows.forEach(element => {
-      // console.log(element.getText());
       let tableRow = element.getText();
       tableArrayRow.push(tableRow);
     });
@@ -122,16 +116,9 @@ class Internet {
     let tableArraySorted = [];
     this.headerAmountSort.click();
     this.tableRows.forEach(element => {
-      // console.log(element.getText());
       let tableRow = element.getText();
       tableArraySorted.push(tableRow);
     });
-    // // TODO: rmv for test verification ONLY
-    // tableArraySorted.pop();
-    // tableArraySorted.push(
-    //   "Jan 9th7:45pm Pending Templates Inc Business + 340.00 USD"
-    // );
-    // //
     return tableArraySorted;
   }
   areArraysEqualSets(a1, a2) {
@@ -163,7 +150,6 @@ class Internet {
    */
   enterUsername(text) {
     this.username.waitForVisible();
-    // this.username.waitForDisplayed();
     this.username.click();
     this.username.setValue(text);
   }
@@ -173,7 +159,6 @@ class Internet {
    */
   enterPassword(text) {
     this.password.waitForVisible();
-    // this.password.waitForDisplayed();
     this.password.click();
     this.password.setValue(text);
   }
@@ -182,7 +167,6 @@ class Internet {
    */
   clickLoginButton() {
     this.loginButton.waitForVisible();
-    // this.loginButton.waitForDisplayed();
     this.loginButton.click();
   }
 }
