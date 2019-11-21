@@ -23,7 +23,7 @@ describe("Batches", () => {
       // start test & set viewport
       await eyes.open(
         browser,
-        "Login Page UI Test",
+        "1 Login Page UI Test",
         "Visual elements exist",
         viewportSize
       );
@@ -48,7 +48,7 @@ describe("Batches", () => {
       // start test & set viewport
       await eyes.open(
         browser,
-        "Data-Driven Test",
+        "2 Data-Driven Test",
         "Login page functionality works",
         viewportSize
       );
@@ -91,7 +91,7 @@ describe("Batches", () => {
       // start test & set viewport
       await eyes.open(
         browser,
-        "Table Sort Test",
+        "3 Table Sort Test",
         "Table Sort functionality works and content is valid",
         viewportSize
       );
@@ -127,7 +127,7 @@ describe("Batches", () => {
       // start test & set viewport
       await eyes.open(
         browser,
-        "Canvas Chart Test",
+        "4 Canvas Chart Test",
         "Canvas Chart data is valid & updates",
         // viewportSize
         { width: 1248, height:  851}
@@ -155,7 +155,7 @@ describe("Batches", () => {
       await eyes.abortIfNotClosed();
     }
   });
-  it.only("Dynamic Content gifs should exist", async function() {
+  it("Dynamic Content gifs should exist", async function() {
     
     // Navigate to URL.
     browser.url('https://demo.applitools.com/hackathon.html?showAd=true');
@@ -171,7 +171,7 @@ describe("Batches", () => {
       // start test & set viewport
       await eyes.open(
         browser,
-        "Dynamic Content Test",
+        "5 Dynamic Content Test",
         "Gifs are validated",
         viewportSize
       );
